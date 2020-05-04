@@ -1,3 +1,5 @@
+#You can simplify this code
+
 from selenium import webdriver
 import chromedriver_autoinstaller
 import time
