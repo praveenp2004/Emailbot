@@ -3,17 +3,20 @@
 from selenium import webdriver
 import chromedriver_autoinstaller
 import time
+from selenium.webdriver.chrome.options import Options
 
-path = chromedriver_autoinstaller.install()
-driver = webdriver.Chrome(executable_path=path)
+options = Options()
+options.headless = True 
+path = chromedriver_autoinstaller.install()  
+driver = webdriver.Chrome(executable_path=path, options=options)
 
 driver.get('https://mail.protonmail.com/login')
 
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-
+#
 actions = ActionChains(driver)
-actions.send_keys('yourusername')
+actions.send_keys('yourprotonmailusername')
 actions.perform()
 
 time.sleep(4)
@@ -48,7 +51,7 @@ compose_button.click()
 time.sleep(3)
 
 actions6 = ActionChains(driver)
-actions6.send_keys('recipientsemail') #To
+actions6.send_keys('recipient') #To
 actions6.perform()
 
 time.sleep(2)
