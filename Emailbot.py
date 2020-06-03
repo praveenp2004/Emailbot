@@ -1,22 +1,30 @@
 #You can simplify this code
 #I chose protonmail
+user = input("enter the username: ")
+passw = input("enter the password: ")
+to = input("enter the recipient email: ")
+body = input("enter what message you want to send: ")
+
 from selenium import webdriver
 import chromedriver_autoinstaller
 import time
 from selenium.webdriver.chrome.options import Options
 
 options = Options()
-options.headless = True 
-path = chromedriver_autoinstaller.install()  
+options.headless = True  # To make browser visible set it to False
+path = chromedriver_autoinstaller.install()  # Returns path of the chromedriver.exe
 driver = webdriver.Chrome(executable_path=path, options=options)
 
 driver.get('https://mail.protonmail.com/login')
 
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-#
+
+
+
+
 actions = ActionChains(driver)
-actions.send_keys('yourprotonmailusername')
+actions.send_keys(str(user))#your proton mail user
 actions.perform()
 
 time.sleep(4)
@@ -28,7 +36,7 @@ actions2.perform()
 time.sleep(1)
 
 actions3 = ActionChains(driver)
-actions3.send_keys('yourpassword')
+actions3.send_keys(str(passw))#your protonmail password
 actions3.perform()
 
 time.sleep(1)
@@ -51,7 +59,7 @@ compose_button.click()
 time.sleep(3)
 
 actions6 = ActionChains(driver)
-actions6.send_keys('recipient') #To
+actions6.send_keys(str(to)) #To
 actions6.perform()
 
 time.sleep(2)
@@ -63,7 +71,7 @@ actions7.perform()
 actions7.perform()
 
 actions8 = ActionChains(driver)
-actions8.send_keys('emergency') #Body
+actions8.send_keys(str(body))#Body
 actions8.perform()
 
 actions9 = ActionChains(driver)
